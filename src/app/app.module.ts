@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule ,CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
@@ -9,6 +9,7 @@ import { AppComponent } from './app.component';
 import { LibraryBooksComponent } from './library-books/library-books.component';
 import { UpdateBooksComponent } from './update-books/update-books.component';
 import { NewBooksComponent } from './new-books/new-books.component';
+import { MaterialModule } from './material/material.module';
 
 @NgModule({
   declarations: [
@@ -23,10 +24,13 @@ import { NewBooksComponent } from './new-books/new-books.component';
     HttpClientModule,
     FormsModule,
    ReactiveFormsModule,
-   BrowserAnimationsModule
-    
+   BrowserAnimationsModule,
+   MaterialModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  schemas: [
+    CUSTOM_ELEMENTS_SCHEMA,
+  ],
 })
 export class AppModule { }

@@ -1,20 +1,23 @@
-<h2>HTML Table</h2>
+<div *ngIf="library.length;else other_content">
+  <table>
+    <tr>
+      <th>Book Id</th>
+      <th>Book Name</th>
+      <th>AuthorName</th>
+      <th>Price</th>
+      <th>Update Book</th>
+    </tr>
+    <tr *ngFor="let lib of library" >
+      <td>{{ lib.bid }}</td>
+      <td>{{ lib.bookName }}</td> 
+      <td>{{ lib.authotName }}</td>
+      <td>{{ lib.price }}</td>  
+      <td>
+        <button><a [routerLink]="['/update', lib.bid ]">Update Book</a></button>
+      </td> 
+    </tr>
+  </table>
+</div>
 
-<table>
-  <tr>
-    <th>Book Id</th>
-    <th>Book Name</th>
-    <th>AuthorName</th>
-    <th>Price</th>
-    <th>Update Book</th>
-  </tr>
-  <tr *ngFor="let lib of library" >
-    <td>{{ lib.bid }}</td>
-    <td>{{ lib.bookName }}</td> 
-    <td>{{ lib.authotName }}</td>
-    <td>{{ lib.price }}</td>  
-    <td>
-      <button><a [routerLink]="['/update', lib.bid ]">Update Book</a></button>
-    </td> 
-  </tr>
-</table>
+<ng-template #other_content><h2>No Book Found</h2></ng-template>
+

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { BookService } from '../book.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 
@@ -17,7 +17,8 @@ export class UpdateBooksComponent implements OnInit {
     authotName: new FormControl('', Validators.required),
     price: new FormControl('', Validators.required),
    });
-  constructor( private _activatedRoute: ActivatedRoute,private bookService:BookService) { }
+  constructor( private _activatedRoute: ActivatedRoute,private bookService:BookService,
+    private route:Router) { }
 
   ngOnInit() {
     
@@ -34,6 +35,13 @@ export class UpdateBooksComponent implements OnInit {
     )
   }
   onSubmit(){
-    this.bookService.updateBook(this.parameterValue,this.form.value).subscribe();
+    this.bookService.updateBook(this.parameterValue,this.form.value).subscribe(
+      data => {
+        this.route.navigate(['/library']);
+      },
+      err =>{
+        console.log(err);
+      }
+    );
   }
 }

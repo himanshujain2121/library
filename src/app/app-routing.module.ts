@@ -6,6 +6,7 @@ import { NewBooksComponent } from './new-books/new-books.component';
 
 
 const routes: Routes = [
+  {path:'',redirectTo:'library', pathMatch: 'full' },
   { path: 'library', component: LibraryBooksComponent },
   { path: 'update/:bid', component: UpdateBooksComponent },
   { path: 'add', component: NewBooksComponent },
