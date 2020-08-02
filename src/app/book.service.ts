@@ -13,8 +13,8 @@ export class BookService {
     return this.http.get(this.url+'allBooks');
   }
 
-  updateBook(book:any){
-
+  updateBook(id,book:any){
+    return this.http.put(this.url+"update/"+id,book);
   }
 
   addBook(books:any){
@@ -22,5 +22,9 @@ export class BookService {
     book.push(books);
     var library = { id:101, book };
     return this.http.post( this.url+'saveBooks',library);
+  }
+
+  getEachBook(id:any){
+   return this.http.get(this.url+"book/"+id);
   }
 }
